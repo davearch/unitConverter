@@ -35,9 +35,11 @@
                               Celsius];
     _resultLabel.text = resultString;
 }
+
 - (IBAction)textFieldReturn:(id)sender {
     [sender resignFirstResponder];
 }
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
     if ([_tempText isFirstResponder] && [touch view] != _tempText) {
