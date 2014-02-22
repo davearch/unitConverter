@@ -26,4 +26,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)convertTemp:(id)sender {
+    double Fahrenheit = [_tempText.text doubleValue];
+    double Celsius = (Fahrenheit - 32) / 1.8;
+    
+    NSString *resultString = [[NSString alloc]
+                              initWithFormat: @"Celsius %f",
+                              Celsius];
+    _resultLabel.text = resultString;
+}
+- (IBAction)textFieldReturn:(id)sender {
+    [sender resignFirstResponder];
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([_tempText isFirstResponder] && [touch view] != _tempText) {
+        [_tempText resignFirstResponder];
+    }
+    [super touchesBegan: touches withEvent: event];
+}
 @end
